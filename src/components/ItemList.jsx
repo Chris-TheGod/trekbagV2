@@ -1,20 +1,33 @@
-export default function ItemList({ items, handleDeleteItem }) {
+export default function ItemList({
+  items,
+  handleDeleteItem,
+  handleToggleItem,
+}) {
   return (
     <ul>
       {items.map((item) => {
         return (
-          <Item key={item.id} item={item} handleDeleteItem={handleDeleteItem} />
+          <Item
+            key={item.id}
+            item={item}
+            handleToggleItem={handleToggleItem}
+            handleDeleteItem={handleDeleteItem}
+          />
         );
       })}
     </ul>
   );
 }
 
-function Item({ item, handleDeleteItem }) {
+function Item({ item, handleDeleteItem, handleToggleItem }) {
   return (
     <li className='item'>
       <label>
-        <input type='checkbox' checked={item.packed} />
+        <input
+          onClick={() => handleToggleItem(item.id)}
+          type='checkbox'
+          checked={item.packed}
+        />
         {item.name}
       </label>
 
