@@ -28,6 +28,22 @@ function App() {
     setItems(initialItems);
   };
 
+  const handleMarkAllAsComplete = () => {
+    const newItems = items.map((item) => {
+      return { ...item, packed: true };
+    });
+
+    setItems(newItems);
+  };
+
+  const handleMarkAllAsIncomplete = () => {
+    const newItems = items.map((item) => {
+      return { ...item, packed: false };
+    });
+
+    setItems(newItems);
+  };
+
   return (
     <>
       <BackgroundHeading />
@@ -41,6 +57,8 @@ function App() {
           handleRemoveAllItems={handleRemoveAllItems}
           handleAddItem={handleAddItem}
           handleSetItemsToInitial={handleSetItemsToInitial}
+          handleMarkAllAsComplete={handleMarkAllAsComplete}
+          handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}
         />
       </main>
 
